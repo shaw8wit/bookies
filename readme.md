@@ -1,5 +1,13 @@
+# The Bookies
+
+A place to buy, rent and avail various offers on books.
+
+## Getting Started
 
 
-ahjdfklsdjklfjskd
-this is a test
 
+## Specifications
+
+
+
+## API's
