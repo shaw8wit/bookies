@@ -21,46 +21,57 @@ namespace bookies.Controllers.Api
         }
 
         // GET /api/author
-        public IEnumerable<AuthorDto> GetAuthors()
+        public IHttpActionResult GetAuthors()
         {
-            return _context.Authors.ToList().Select(Mapper.Map<Author, AuthorDto>);
+            return Ok(_context.Authors.ToList().Select(Mapper.Map<Author, AuthorDto>));
+        }
+
+        // GET /api/author/1
+        public IHttpActionResult GetAuthor(int id)
+        {
+            var author = _context.Authors.SingleOrDefault(a => a.Id == id);
+            if (author == null)
+                return NotFound();
+            return Ok(Mapper.Map<Author, AuthorDto>(author));
         }
 
         // POST /api/author
         [HttpPost]
-        public AuthorDto CreateAuthor(AuthorDto authorDto)
+        public IHttpActionResult CreateAuthor(AuthorDto authorDto)
         {
             if (!ModelState.IsValid)
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                return BadRequest();
             var author = Mapper.Map<AuthorDto, Author>(authorDto);
             _context.Authors.Add(author);
             _context.SaveChanges();
             authorDto.Id = author.Id;
-            return authorDto;
+            return Created(new Uri(Request.RequestUri + "/" + author.Id), authorDto);
         }
 
         //PUT /api/author/1
         [HttpPut]
-        public void UpdateAuthor(int id, AuthorDto authorDto)
+        public IHttpActionResult UpdateAuthor(int id, AuthorDto authorDto)
         {
             if (!ModelState.IsValid)
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                return BadRequest();
             var authorInDb = _context.Authors.SingleOrDefault(a => a.Id == id);
             if (authorInDb == null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+                return NotFound();
             Mapper.Map(authorDto, authorInDb);
             _context.SaveChanges();
+            return StatusCode(HttpStatusCode.NoContent);
         }
 
         // DELETE /api/author/1
         [HttpDelete]
-        public void DeleteAuthor(int id)
+        public IHttpActionResult DeleteAuthor(int id)
         {
             var authorInDb = _context.Authors.SingleOrDefault(a => a.Id == id);
             if (authorInDb == null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+                return NotFound();
             _context.Authors.Remove(authorInDb);
             _context.SaveChanges();
+            return StatusCode(HttpStatusCode.NoContent);
         }
     }
 }

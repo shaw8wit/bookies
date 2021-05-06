@@ -21,46 +21,57 @@ namespace bookies.Controllers.Api
         }
 
         // GET /api/genre
-        public IEnumerable<GenreDto> GetAllGenre()
+        public IHttpActionResult GetAllGenre()
         {
-            return _context.Genres.ToList().Select(Mapper.Map<Genre, GenreDto>);
+            return Ok(_context.Genres.ToList().Select(Mapper.Map<Genre, GenreDto>));
+        }
+
+        // GET /api/genre/1
+        public IHttpActionResult GetGenre(int id)
+        {
+            var genre = _context.Genres.SingleOrDefault(g => g.Id == id);
+            if (genre == null)
+                return NotFound();
+            return Ok(Mapper.Map<Genre, GenreDto>(genre));
         }
 
         // POST /api/genre
         [HttpPost]
-        public GenreDto CreateGenre(GenreDto genreDto)
+        public IHttpActionResult CreateGenre(GenreDto genreDto)
         {
             if (!ModelState.IsValid)
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                return BadRequest();
             var genre = Mapper.Map<GenreDto, Genre>(genreDto);
             _context.Genres.Add(genre);
             _context.SaveChanges();
             genreDto.Id = genre.Id;
-            return genreDto;
+            return Created(new Uri(Request.RequestUri + "/" + genre.Id), genreDto);
         }
 
         //PUT /api/author/1
         [HttpPut]
-        public void UpdateGenre(int id, GenreDto genreDto)
+        public IHttpActionResult UpdateGenre(int id, GenreDto genreDto)
         {
             if (!ModelState.IsValid)
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                return BadRequest();
             var genreInDb = _context.Genres.SingleOrDefault(g => g.Id == id);
             if (genreInDb == null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+                return NotFound();
             Mapper.Map(genreDto, genreInDb);
             _context.SaveChanges();
+            return StatusCode(HttpStatusCode.NoContent);
         }
 
         // DELETE /api/genre/1
         [HttpDelete]
-        public void DeleteGenre(int id)
+        public IHttpActionResult DeleteGenre(int id)
         {
             var genreInDb = _context.Genres.SingleOrDefault(g => g.Id == id);
             if (genreInDb == null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+                return NotFound();
             _context.Genres.Remove(genreInDb);
             _context.SaveChanges();
+            return StatusCode(HttpStatusCode.NoContent);
         }
     }
 }

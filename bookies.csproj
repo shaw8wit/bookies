@@ -183,10 +183,12 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\AuthorController.cs" />
+    <Compile Include="Controllers\Api\BookController.cs" />
     <Compile Include="Controllers\Api\GenreController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Dtos\AuthorDto.cs" />
+    <Compile Include="Dtos\BookDto.cs" />
     <Compile Include="Dtos\GenreDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
