@@ -16,6 +16,8 @@ namespace bookies.App_Start
             Mapper.CreateMap<GenreDto, Genre>();
             Mapper.CreateMap<Author, AuthorDto>();
             Mapper.CreateMap<AuthorDto, Author>();
+            Mapper.CreateMap<Book, BookDto>();
+            Mapper.CreateMap<BookDto, Book>();
         }
     }
 }
