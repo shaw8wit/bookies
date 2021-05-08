@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace bookies.Models
@@ -10,5 +11,7 @@ namespace bookies.Models
         [Required]
         [StringLength(50)]
         public string Name { get; set; }
+
+        public ICollection<Book> Books { get; set; }
     }
 }

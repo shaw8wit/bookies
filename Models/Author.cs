@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace bookies.Models
@@ -13,5 +14,7 @@ namespace bookies.Models
 
         [StringLength(255)]
         public string Description { get; set; }
+
+        public ICollection<Book> Books { get; set; }
     }
 }

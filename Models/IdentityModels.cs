@@ -37,5 +37,7 @@ namespace bookies.Models
         {
             return new ApplicationDbContext();
         }
+
+        
     }
 }

@@ -48,6 +48,12 @@
     <Reference Include="AutoMapper, Version=4.1.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>packages\AutoMapper.4.1.0\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -124,12 +130,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -185,6 +185,8 @@
     <Compile Include="Controllers\Api\AuthorController.cs" />
     <Compile Include="Controllers\Api\BookController.cs" />
     <Compile Include="Controllers\Api\GenreController.cs" />
+    <Compile Include="Controllers\Api\RentsController.cs" />
+    <Compile Include="Controllers\Api\SalesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Dtos\AuthorDto.cs" />
@@ -224,6 +226,14 @@
     <Compile Include="Migrations\202105021822447_AddSaleModel.cs" />
     <Compile Include="Migrations\202105021822447_AddSaleModel.Designer.cs">
       <DependentUpon>202105021822447_AddSaleModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105081811255_UpdateGenre.cs" />
+    <Compile Include="Migrations\202105081811255_UpdateGenre.Designer.cs">
+      <DependentUpon>202105081811255_UpdateGenre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105081816181_UpdateAuthor.cs" />
+    <Compile Include="Migrations\202105081816181_UpdateAuthor.Designer.cs">
+      <DependentUpon>202105081816181_UpdateAuthor.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -335,6 +345,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202105021822447_AddSaleModel.resx">
       <DependentUpon>202105021822447_AddSaleModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105081811255_UpdateGenre.resx">
+      <DependentUpon>202105081811255_UpdateGenre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105081816181_UpdateAuthor.resx">
+      <DependentUpon>202105081816181_UpdateAuthor.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
