@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Data.Entity;
 using bookies.Models;
 using bookies.Dtos;
 using AutoMapper;
@@ -22,16 +23,26 @@ namespace bookies.Controllers.Api
         // GET /api/book
         public IHttpActionResult GetBooks()
         {
-            return Ok(_context.Books.ToList());
+            return Ok(
+                _context.Books
+                .Include(b => b.Authors)
+                .Include(b => b.Genres)
+                .ToList()
+                .Select(Mapper.Map<Book, BookDto>)
+            );
         }
 
         // GET /api/book/1
         public IHttpActionResult GetBook(int id)
         {
-            var book = _context.Books.SingleOrDefault(b => b.Id == id);
+            var book = _context.Books
+                .Include(b => b.Authors)
+                .Include(b => b.Genres)
+                .SingleOrDefault(b => b.Id == id);
             if (book == null)
                 return NotFound();
-            return Ok(Mapper.Map<Book, BookDto>(book));
+            var bookDto = Mapper.Map<Book, BookDto>(book);
+            return Ok(bookDto);
         }
 
         // POST /api/book
@@ -41,18 +52,22 @@ namespace bookies.Controllers.Api
             if (!ModelState.IsValid)
                 return BadRequest();
             var book = Mapper.Map<BookDto, Book>(bookDto);
-            /*
-            book.Authors.Clear();
-            book.Genres.Clear();
+            List<Author> authors = new List<Author>();
             foreach(AuthorDto authorDto in bookDto.Authors)
             {
-                book.Authors.Append(Mapper.Map<AuthorDto, Author>(authorDto));
+                Author author = _context.Authors.SingleOrDefault(a => a.Id == authorDto.Id);
+                if (author == null) return BadRequest();
+                authors.Add(author);
             }
+            book.Authors = authors;
+            List<Genre> genres = new List<Genre>();
             foreach (GenreDto genreDto in bookDto.Genres)
             {
-                book.Genres.Append(Mapper.Map<GenreDto, Genre>(genreDto));
+                Genre genre = _context.Genres.SingleOrDefault(a => a.Id == genreDto.Id);
+                if (genre == null) return BadRequest();
+                genres.Add(genre);
             }
-            */
+            book.Genres = genres;
             _context.Books.Add(book);
             _context.SaveChanges();
             bookDto.Id = book.Id;
