@@ -4,7 +4,9 @@ A place to buy, rent and avail various offers on books.
 
 ## Getting Started
 
-+ Delete and Add Add_Data
++ Clone the repo locally
++ Delete and Add App_Data
++ `enable-migrations` if entity framework is not enabled
 + Run migrations with `update-database`
 
 
