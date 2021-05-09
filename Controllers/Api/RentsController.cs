@@ -17,16 +17,16 @@ namespace bookies.Controllers.Api
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: api/Rents
-        public IQueryable<Rent> GetRents()
+        public IHttpActionResult GetRents()
         {
-            return db.Rents;
+            return Ok(db.Rents.Include(r => r.User).Include(r => r.Book).ToList());
         }
 
         // GET: api/Rents/5
         [ResponseType(typeof(Rent))]
         public IHttpActionResult GetRent(int id)
         {
-            Rent rent = db.Rents.Find(id);
+            Rent rent = db.Rents.Include(r => r.User).Include(r => r.Book).SingleOrDefault(r => r.Id == id);
             if (rent == null)
             {
                 return NotFound();
@@ -44,10 +44,11 @@ namespace bookies.Controllers.Api
                 return BadRequest(ModelState);
             }
 
-            if (id != rent.Id)
-            {
-                return BadRequest();
-            }
+            ApplicationUser user = db.Users.SingleOrDefault(u => u.Id == rent.User.Id);
+            Book book = db.Books.SingleOrDefault(b => b.Id == rent.Book.Id);
+            if (user == null || book == null) return BadRequest();
+            rent.User = user;
+            rent.Book = book;
 
             db.Entry(rent).State = EntityState.Modified;
 
@@ -78,6 +79,12 @@ namespace bookies.Controllers.Api
             {
                 return BadRequest(ModelState);
             }
+
+            ApplicationUser user = db.Users.SingleOrDefault(u => u.Id == rent.User.Id);
+            Book book = db.Books.SingleOrDefault(b => b.Id == rent.Book.Id);
+            if (user == null || book == null) return BadRequest();
+            rent.User = user;
+            rent.Book = book;
 
             db.Rents.Add(rent);
             db.SaveChanges();
