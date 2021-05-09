@@ -17,16 +17,19 @@ namespace bookies.Controllers.Api
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: api/Sales
-        public IQueryable<Sale> GetSales()
+        public IHttpActionResult GetSales()
         {
-            return db.Sales;
+            return Ok(db.Sales.Include(s => s.User).Include(s => s.Book).ToList());
         }
 
         // GET: api/Sales/5
         [ResponseType(typeof(Sale))]
         public IHttpActionResult GetSale(int id)
         {
-            Sale sale = db.Sales.Find(id);
+            Sale sale = db.Sales
+                .Include(s => s.User)
+                .Include(s => s.Book)
+                .SingleOrDefault(s => s.Id == id);
             if (sale == null)
             {
                 return NotFound();
@@ -44,10 +47,11 @@ namespace bookies.Controllers.Api
                 return BadRequest(ModelState);
             }
 
-            if (id != sale.Id)
-            {
-                return BadRequest();
-            }
+            ApplicationUser user = db.Users.SingleOrDefault(u => u.Id == sale.User.Id);
+            Book book = db.Books.SingleOrDefault(b => b.Id == sale.Book.Id);
+            if (user == null || book == null || id != sale.Id) return BadRequest();
+            sale.User = user;
+            sale.Book = book;
 
             db.Entry(sale).State = EntityState.Modified;
 
@@ -78,6 +82,12 @@ namespace bookies.Controllers.Api
             {
                 return BadRequest(ModelState);
             }
+
+            ApplicationUser user = db.Users.SingleOrDefault(u => u.Id == sale.User.Id);
+            Book book = db.Books.SingleOrDefault(b => b.Id == sale.Book.Id);
+            if (user == null || book == null) return BadRequest();
+            sale.User = user;
+            sale.Book = book;
 
             db.Sales.Add(sale);
             db.SaveChanges();
