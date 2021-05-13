@@ -185,6 +185,7 @@
     <Compile Include="Controllers\Api\AuthorController.cs" />
     <Compile Include="Controllers\Api\BookController.cs" />
     <Compile Include="Controllers\Api\GenreController.cs" />
+    <Compile Include="Controllers\Api\OffersController.cs" />
     <Compile Include="Controllers\Api\RentsController.cs" />
     <Compile Include="Controllers\Api\SalesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -303,9 +304,11 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Offers\OffersView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\" />
     <Folder Include="Views\Author\" />
   </ItemGroup>
   <ItemGroup>
