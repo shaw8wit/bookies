@@ -8,6 +8,8 @@ namespace bookies.Controllers
 {
     public class HomeController : Controller
     {
+        
+        
         public ActionResult Index()
         {
             return View();
@@ -19,6 +21,15 @@ namespace bookies.Controllers
 
             return View();
         }
+
+
+        public ActionResult Books()
+        {
+          //  ViewBag.Message = "Your contact page.";
+
+            return View("Book");
+        }
+
 
         public ActionResult Contact()
         {
