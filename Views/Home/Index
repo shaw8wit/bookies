@@ -1,0 +1,65 @@
+@{ 
+
+}
+
+<style>
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .heading {
+        padding-bottom: 20px;
+        padding-top: 0px;
+        margin-left: 10px;
+        font-size: xx-large;
+    }
+
+    .col-2 {
+        float: left;
+        width: 48%;
+    }
+
+    .showcase {
+        width: 100%;
+        margin: auto;
+        overflow: auto;
+    }
+
+    .right-heading {
+        width: 80%;
+        padding-top: 10%;
+        font-weight: 400;
+        line-height: 1.5em;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .section-description {
+        width: 80%;
+        padding: 10px;
+    }
+
+    .book-picture {
+        height: 490px;
+    }
+</style>
+<div class="heading">
+    <h1>About Us</h1>
+</div>
+<div id="showcase1-container">
+    <div class="showcase">
+        <div class="col-2">
+
+            <img src="~/Images/pexels-photo-1907785.jpeg" />
+        </div>
+        <div class="col-2">
+            <div class="feature-text">
+                <h1 class="right-heading">Yes!! We are the best book store available online..</h1>
+                <p class="section-description">
+                    Some text here too.
+                    We can use this to put some description according to our project.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
