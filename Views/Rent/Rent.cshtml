@@ -1,0 +1,40 @@
+﻿@model bookies.Models.Rent
+
+@{
+    ViewBag.Title = "Rent";
+}
+
+<h2>Rent</h2>
+
+<h3>Rent Books</h3>
+<div>
+    <h4>Rent</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RentDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RentDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DueDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DueDate)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "book")
+        </div>
+    }
+</div>

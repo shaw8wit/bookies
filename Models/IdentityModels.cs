@@ -22,6 +22,8 @@ namespace bookies.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        internal object book;
+
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Author> Authors { get; set; }
         public DbSet<Book> Books { get; set; }
