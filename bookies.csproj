@@ -187,8 +187,11 @@
     <Compile Include="Controllers\Api\GenreController.cs" />
     <Compile Include="Controllers\Api\RentsController.cs" />
     <Compile Include="Controllers\Api\SalesController.cs" />
+    <Compile Include="Controllers\BookController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LibraryCardController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RentController.cs" />
     <Compile Include="Dtos\AuthorDto.cs" />
     <Compile Include="Dtos\BookDto.cs" />
     <Compile Include="Dtos\GenreDto.cs" />
@@ -241,6 +244,7 @@
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Librarycard.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Rent.cs" />
     <Compile Include="Models\Sale.cs" />
@@ -256,6 +260,13 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\horror-book-icon-flat-style-illustration_csp85865328.jpg" />
+    <Content Include="Images\pexels-photo-1907785.jpeg" />
+    <Content Include="Images\photo-1553503995-b6aefccad354.jpeg" />
+    <Content Include="Images\pink-motivation-book-green-circle-isolated-white-background-vector-icon-realistic-book-icon-pink-motivation-book-110969365.jpg" />
+    <Content Include="Images\Screenshot %28460%29.png" />
+    <Content Include="Images\taco.jpg" />
+    <Content Include="Images\thriller-book-icon-flat-style-vector-34226752.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -303,10 +314,18 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Book\Book.cshtml" />
+    <Content Include="Views\Book\Addforsale.cshtml" />
+    <Content Include="Views\Book\Delete.cshtml" />
+    <Content Include="Views\Rent\Rent.cshtml" />
+    <Content Include="Views\Book\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Author\" />
+    <Folder Include="Views\LibraryCard\" />
+    <Folder Include="Views\Library\" />
+    <Folder Include="Views\Sales\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
