@@ -7,39 +7,51 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Book</h4>
+    <h4>Book Details:</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Name)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Name)
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Isbn)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Isbn)
+        </dd>
+
+        <dt>Author</dt>
+        <dd>
+            @foreach (var author in Model.Authors)
+            {
+                @: @author.Name - @author.Description<br />
+            }
+        </dd>
+
+        <dt>Genre</dt>
+        <dd>
+            @foreach (var genre in Model.Genres)
+            {
+                @genre.Name<br />
+            }
         </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.Price)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Price)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
         </dd>
 
     </dl>

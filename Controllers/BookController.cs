@@ -48,15 +48,17 @@ namespace bookies.Controllers
             _context.SaveChanges();
             return RedirectToAction("book","book");
         }
-     //details page
+
+
+        //details page
         public ActionResult Details(int? id)
         {
-            var book1 = _context.Books.Find(id);
-            if (book1 == null)
+            Book book = _context.Books.Include(b => b.Genres).Include(b => b.Authors).SingleOrDefault(b => b.Id == id);
+            if (book == null)
             {
                 return HttpNotFound();
             }
-            return View("Details", book1);
+            return View("Details", book);
         }
         [HttpPost]
         public ActionResult Details(int id)
