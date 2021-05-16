@@ -260,7 +260,11 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\20170509_Eng_Library_DJA_012_3.jpg" />
+    <Content Include="Images\922661.jpg" />
+    <Content Include="Images\EMsbiwYWsAAlvso.jpg" />
     <Content Include="Images\horror-book-icon-flat-style-illustration_csp85865328.jpg" />
+    <Content Include="Images\library-488691_1280.jpg" />
     <Content Include="Images\pexels-photo-1907785.jpeg" />
     <Content Include="Images\photo-1553503995-b6aefccad354.jpeg" />
     <Content Include="Images\pink-motivation-book-green-circle-isolated-white-background-vector-icon-realistic-book-icon-pink-motivation-book-110969365.jpg" />
