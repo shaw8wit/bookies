@@ -260,13 +260,13 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Images\20170509_Eng_Library_DJA_012_3.jpg" />
-    <Content Include="Images\922661.jpg" />
-    <Content Include="Images\EMsbiwYWsAAlvso.jpg" />
+    <Content Include="Images\carousel1.jpg" />
+    <Content Include="Images\carousel3.jpg" />
+    <Content Include="Images\carousel2.jpg" />
     <Content Include="Images\horror-book-icon-flat-style-illustration_csp85865328.jpg" />
-    <Content Include="Images\library-488691_1280.jpg" />
+    <Content Include="Images\carousel4.jpg" />
     <Content Include="Images\pexels-photo-1907785.jpeg" />
-    <Content Include="Images\photo-1553503995-b6aefccad354.jpeg" />
+    <Content Include="Images\carousel5.jpeg" />
     <Content Include="Images\pink-motivation-book-green-circle-isolated-white-background-vector-icon-realistic-book-icon-pink-motivation-book-110969365.jpg" />
     <Content Include="Images\Screenshot %28460%29.png" />
     <Content Include="Images\taco.jpg" />
@@ -318,7 +318,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Book\Book.cshtml" />
+    <Content Include="Views\Book\All.cshtml" />
     <Content Include="Views\Book\Addforsale.cshtml" />
     <Content Include="Views\Book\Delete.cshtml" />
     <Content Include="Views\Rent\Rent.cshtml" />
@@ -328,9 +328,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Author\" />
-    <Folder Include="Views\Library\" />
-    <Folder Include="Views\Sales\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

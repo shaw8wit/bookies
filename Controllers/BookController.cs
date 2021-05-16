@@ -16,17 +16,15 @@ namespace bookies.Controllers
         private ApplicationDbContext _context = new ApplicationDbContext();
 
         // GET: Books
-        public ActionResult Book()
+        public ActionResult All()
         {
-            List<Book> elist = _context.Books.ToList();
-            return View(elist);
+            return View(_context.Books.ToList());
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
 
 
         //delete book
-       
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Delete(int id)
         {
             Book book = _context.Books.Find(id);
@@ -36,6 +34,8 @@ namespace bookies.Controllers
             }
             return View("Delete",book);
         }
+
+
         [HttpPost]
         public ActionResult Delete(string id)
         {

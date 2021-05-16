@@ -109,7 +109,6 @@ img {
 }
 
 /* Features! */
-
         .features {
             padding-top: 150px;
             padding-right: 10px;
@@ -269,9 +268,9 @@ img {
  
 </head>
 
-<body style="background-color: rgb(11, 11, 11)">
+<body>
 
-    <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="3400">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="4500">
         <!-- Indicators -->
         <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -282,20 +281,20 @@ img {
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
             <div class="item active">
-                <img src="~/Images/20170509_Eng_Library_DJA_012_3.jpg" />
+                <img src="~/Images/carousel1.jpg" />
             </div>
 
             <div class="item">
-                <img src="~/Images/EMsbiwYWsAAlvso.jpg" />
+                <img src="~/Images/carousel2.jpg" />
             </div>
             <div class="item">
-                <img src="~/Images/922661.jpg" />
+                <img src="~/Images/carousel3.jpg" />
             </div>
             <div class="item">
-                <img src="~/Images/library-488691_1280.jpg" />
+                <img src="~/Images/carousel4.jpg" />
             </div>
             <div class="item">
-                <img src="~/Images/photo-1553503995-b6aefccad354.jpeg" />
+                <img src="~/Images/carousel5.jpeg" />
             </div>
         </div>
 
@@ -386,14 +385,14 @@ img {
     </section>
 
     <script>
-        const navButton = document.querySelector('button[aria-expanded]');
+        // const navButton = document.querySelector('button[aria-expanded]');
 
-        function toggleNav({ target }) {
-            const expanded = target.getAttribute('aria-expanded') === 'true' || false;
-            navButton.setAttribute('aria-expanded', !expanded);
-        }
+        // function toggleNav({ target }) {
+            // const expanded = target.getAttribute('aria-expanded') === 'true' || false;
+            // navButton.setAttribute('aria-expanded', !expanded);
+        // }
 
-        navButton.addEventListener('click', toggleNav);
+        // navButton.addEventListener('click', toggleNav);
     </script>
 
 </body>
