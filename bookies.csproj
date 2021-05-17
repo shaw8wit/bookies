@@ -185,6 +185,7 @@
     <Compile Include="Controllers\Api\AuthorController.cs" />
     <Compile Include="Controllers\Api\BookController.cs" />
     <Compile Include="Controllers\Api\GenreController.cs" />
+    <Compile Include="Controllers\Api\OffersController.cs" />
     <Compile Include="Controllers\Api\RentsController.cs" />
     <Compile Include="Controllers\Api\SalesController.cs" />
     <Compile Include="Controllers\BookController.cs" />
@@ -325,6 +326,7 @@
     <Content Include="Views\Book\Details.cshtml" />
     <Content Include="Views\Book\Details2.cshtml" />
     <Content Include="Views\LibraryCard\LibraryCard.cshtml" />
+    <Content Include="Views\Offers\OffersView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
