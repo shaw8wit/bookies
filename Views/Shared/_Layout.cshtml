@@ -3,15 +3,24 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bookies | @ViewBag.Title</title>
+    <title>@ViewBag.Title | Bookies</title>
     <style>
         .navbar {
-            height: 90px;
+            height: 13vh;
             display: flex;
-            background-color: darkolivegreen !important;
+            margin: 0 !important;
+            /*background-color : darkolivegreen !important;*/
         }
         .center {
             align-self: center;
+        }
+        .body {
+            min-height: 70vh;
+            margin-top: 14vh;
+            padding: 1vh 1vw;
+        }
+        body {
+            padding-top: 0 !important;
         }
     </style>
     @Styles.Render("~/Content/css")
@@ -60,8 +69,10 @@
         </div>
     </nav>
 
-    <main style="padding-top: 70px;" class="container">
-        @RenderBody()
+    <main class="container">
+        <div class="body">
+            @RenderBody()
+        </div>
         <hr />
         <footer class="text-center">
             <p>&copy; Copyright @DateTime.Now.Year - The Bookies</p>
