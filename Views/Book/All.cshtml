@@ -31,7 +31,7 @@
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
-                @Html.ActionLink("BUY", "Details2", new { id = item.Id })|
+                @Html.ActionLink("Buy", "Buy", new { id = item.Id }) |
                 @Html.ActionLink("Rent", "Rent", new { id = item.Id })
             </td>
         </tr>

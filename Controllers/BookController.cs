@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Net;
 using System.Web;
+using System.Web.Security;
 using System.Web.Mvc;
 using bookies.Models;
 
@@ -15,12 +16,63 @@ namespace bookies.Controllers
     {
         private ApplicationDbContext _context = new ApplicationDbContext();
 
-        // GET: Books
+        // All books list page
         public ActionResult All()
         {
             return View(_context.Books.ToList());
         }
 
+        // Single book details page
+        public ActionResult Details(int? id)
+        {
+            Book book = _context.Books.Include(b => b.Genres)
+                .Include(b => b.Authors).SingleOrDefault(b => b.Id == id);
+            if (book == null)
+            {
+                return HttpNotFound();
+            }
+            return View(book);
+        }
+
+        // Buy book
+        public ActionResult Buy(int id)
+        {
+            if(!Request.IsAuthenticated)
+            {
+                return RedirectToRoute(new { action = "Login", controller = "Account", area = "" });
+            }
+            var book = _context.Books.SingleOrDefault(b => b.Id == id);
+            if (book == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.message = "Buy";
+            return View("Pay", book);
+        }
+
+        /*
+        [HttpPost]
+        public ActionResult Details(int id)
+        {
+            var book1 = _context.Books.Find(id);
+            if (book1 == null)
+            {
+                return HttpNotFound();
+            }
+            return View(book1);
+        }
+
+
+        [HttpPost]
+        public ActionResult Details2(int id)
+        {
+            var book1 = _context.Books.Find(id);
+            if (book1 == null)
+            {
+                return HttpNotFound();
+            }
+            return View(book1);
+        }
 
         //delete book
         [HttpPost]
@@ -48,47 +100,7 @@ namespace bookies.Controllers
             _context.SaveChanges();
             return RedirectToAction("book","book");
         }
-
-
-        //details page
-        public ActionResult Details(int? id)
-        {
-            Book book = _context.Books.Include(b => b.Genres).Include(b => b.Authors).SingleOrDefault(b => b.Id == id);
-            if (book == null)
-            {
-                return HttpNotFound();
-            }
-            return View("Details", book);
-        }
-        [HttpPost]
-        public ActionResult Details(int id)
-        {
-            var book1 = _context.Books.Find(id);
-            if (book1 == null)
-            {
-                return HttpNotFound();
-            }
-            return View(book1);
-        }
-        public ActionResult Details2(int? id)
-        {
-            var book1 = _context.Books.Find(id);
-            if (book1 == null)
-            {
-                return HttpNotFound();
-            }
-            return View("Details2", book1);
-        }
-        [HttpPost]
-        public ActionResult Details2(int id)
-        {
-            var book1 = _context.Books.Find(id);
-            if (book1 == null)
-            {
-                return HttpNotFound();
-            }
-            return View(book1);
-        }
+        */
 
         //sell books
         [HttpGet]
@@ -98,6 +110,7 @@ namespace bookies.Controllers
             Book book1 = new Book();
             return View(book1);
         }
+
         [HttpPost]
         public ActionResult Addforsale(Book book1)
         {
@@ -114,11 +127,6 @@ namespace bookies.Controllers
             }
             base.Dispose(disposing);
         }
-
-
-
-
-
     }
-    }
+}
 

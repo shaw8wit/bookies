@@ -323,7 +323,7 @@
     <Content Include="Views\Book\Delete.cshtml" />
     <Content Include="Views\Rent\Rent.cshtml" />
     <Content Include="Views\Book\Details.cshtml" />
-    <Content Include="Views\Book\Details2.cshtml" />
+    <Content Include="Views\Book\Pay.cshtml" />
     <Content Include="Views\LibraryCard\LibraryCard.cshtml" />
   </ItemGroup>
   <ItemGroup>
