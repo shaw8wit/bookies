@@ -7,7 +7,7 @@
     <style>
 body {
   font-size: 15px;
-  background-color: rgb(0, 20, 0, 0.7);
+  background-color: grey;
 }
 
 button {
@@ -72,6 +72,7 @@ img {
         .cta1 {
             grid-area: cta1;
             padding-left: 120px;
+
         }
 
         .cta2 {
@@ -256,9 +257,13 @@ img {
             padding-bottom:64px;
             font-size:40px;
             font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color:#b6ff00;
+            color:midnightblue;
             font-style:italic;
 
+        }
+        .carousel-inner{
+            height: 500px;
+            width: 1112px;
         }
 
     </style>
@@ -277,6 +282,8 @@ img {
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
             <li data-target="#myCarousel" data-slide-to="1"></li>
             <li data-target="#myCarousel" data-slide-to="2"></li>
+            <li data-target="#myCarousel" data-slide-to="3"></li>
+            <li data-target="#myCarousel" data-slide-to="4"></li>
         </ol>
 
         <!-- Wrapper for slides -->
@@ -286,7 +293,7 @@ img {
             </div>
 
             <div class="item">
-                <img src="~/Images/carousel2.jpg" />
+                <img src="~/Images/carousel2.jpg" width="1112px" />
             </div>
             <div class="item">
                 <img src="~/Images/carousel3.jpg" />
@@ -295,7 +302,7 @@ img {
                 <img src="~/Images/carousel4.jpg" />
             </div>
             <div class="item">
-                <img src="~/Images/carousel5.jpeg" />
+                <img src="~/Images/carousel5.jpeg" width="1112px" />
             </div>
         </div>
 
@@ -315,12 +322,12 @@ img {
 
     <div class="top">
         <div class="cta cta1">
-            <p class="price" style="color:white;">20%  OFF</p>
-            <p style="color:white;">For Library Card Holders</p>
+            <p class="price" style="color:white;">10% Extra OFF</p>
+            <p style="color:black; font-weight:700"; >For Library Card Holders</p>
         </div>
         <div class="cta cta2">
             <p class="price" style="color:white;">25% OFF</p>
-            <p class="extra" style="color:white;">On Buying 5 Books</p>
+            <p class="extra" style="color:black;font-weight:700" ;">On Buying 5 Books</p>
         </div>
 
     </div>
