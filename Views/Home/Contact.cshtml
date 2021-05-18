@@ -12,7 +12,7 @@ body {
 }
 
 
-/* Style inputs */
+
 input[type=text], select, textarea {
   width: 100%;
   padding: 12px;
@@ -35,38 +35,40 @@ input[type=submit]:hover {
   background-color: #45a049;
 }
 
-/* Style the container/contact section */
+
 .container {
   border-radius: 5px;
   
-  padding: 10px;
+ 
 }
 
-/* Create two columns that float next to eachother */
+
 .column {
   float: right;
   width: 30%;
   margin-top: 6px;
-  padding: 20px;
+  padding: 20px; 
 }
-.column1{
+        .column1 {
             float: left;
-            width: 30%;
             margin-top: 6px;
+            width: 30%;
             padding: 20px;
         }
 
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+            
+          
+        }
 
     </style>
 </head>
 <body>
-    
+
     <div class="container">
         <div style="text-align:center">
             <h2>Contact Us</h2>
@@ -74,23 +76,23 @@ input[type=submit]:hover {
         </div>
         <div class="row">
             <div class="column1">
-                <img src="~/Images/contact_us.jpg" style="width:250%">
+                <img src="~/Images/contact-us-image.png" style="width:250%">
             </div>
             <div class="column">
-                <form >
+                <form onsubmit="myalert()">
                     <label for="fname">First Name</label>
-                    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+                    <input type="text" id="fname" name="firstname" placeholder="Your name.." required>
                     <label for="lname">Last Name</label>
-                    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+                    <input type="text" id="lname" name="lastname" placeholder="Your last name.." required>
                     <label for="country">Country</label>
-                    <select id="country" name="country">
+                    <select id="country" name="country" required>
                         <option value="australia">Australia</option>
                         <option value="canada">India</option>
                         <option value="usa">USA</option>
                     </select>
                     <label for="subject">Subject</label>
-                    <textarea id="subject" name="subject" placeholder="Write something.." style="height:170px"></textarea>
-                    <input type="submit" value="Submit" onclick="alert('Successfully Submitted!')">
+                    <textarea id="subject" name="subject" placeholder="Write something.." style="height:100px" required></textarea>
+                    <input type="submit" value="Submit" >
                 </form>
             </div>
         </div>
@@ -139,5 +141,10 @@ input[type=submit]:hover {
             </div>
         </div>
     </div>
+    <script>
+        function myalert() {
+            alert("Successfully Submitted!");
+        }
+    </script>
 </body>
 </html>
