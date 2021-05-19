@@ -1,7 +1,4 @@
-﻿using System;
-using System.Globalization;
-using System.Linq;
-using System.Security.Claims;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -153,7 +150,7 @@ namespace bookies.Controllers
             {
                 var user = new ApplicationUser 
                 { 
-                    UserName = model.Username, 
+                    UserName = model.Email, 
                     Email = model.Email,
                     LibraryCard = model.LibraryCard
                 };
