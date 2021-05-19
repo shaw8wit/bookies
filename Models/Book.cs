@@ -25,5 +25,10 @@ namespace bookies.Models
         public ICollection<Author> Authors { get; set; }
 
         public ICollection<Genre> Genres { get; set; }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

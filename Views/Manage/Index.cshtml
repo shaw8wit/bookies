@@ -1,15 +1,21 @@
-﻿@model bookies.Models.IndexViewModel
+﻿@model bookies.ViewModel.ManageControllerProfileViewModel
 @{
-    ViewBag.Title = "Manage";
+    ViewBag.Title = "Your Profile";
 }
-
-<h2>@ViewBag.Title.</h2>
 
 <p class="text-success">@ViewBag.StatusMessage</p>
 <div>
-    <h4>Change your account settings</h4>
+    <h3>@Model.Username's profile</h3>
     <hr />
     <dl class="dl-horizontal">
+        <dt>Username:</dt>
+        <dd>
+            @Model.Username
+        </dd>
+        <dt>Email:</dt>
+        <dd>
+            @Model.Email
+        </dd>
         <dt>Password:</dt>
         <dd>
             [
@@ -23,69 +29,94 @@
             }
             ]
         </dd>
-        <dt>External Logins:</dt>
+        <dt>Rents:</dt>
         <dd>
-            @Model.Logins.Count [
-            @Html.ActionLink("Manage", "ManageLogins") ]
-        </dd>
-        <dt>Email:</dt>
-        <dd>
-            @Model.Email
-        </dd>
-        @*
-        Phone Numbers can used as a second factor of verification in a two-factor authentication system.
-
-         See <a href="https://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
-            for details on setting up this ASP.NET application to support two-factor authentication using SMS.
-
-         Uncomment the following block after you have set up two-factor authentication
-        *@
-        @*
-        <dt>Phone Number:</dt>
-        <dd>
-            @(Model.PhoneNumber ?? "None")
-            @if (Model.PhoneNumber != null)
+            @if (Model.Rents == null || !Model.Rents.Any())
             {
-                <br />
-                <text>[&nbsp;&nbsp;@Html.ActionLink("Change", "AddPhoneNumber")&nbsp;&nbsp;]</text>
-                using (Html.BeginForm("RemovePhoneNumber", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                {
-                    @Html.AntiForgeryToken()
-                    <text>[<input type="submit" value="Remove" class="btn-link" />]</text>
-                }
+                <span>NA</span>
             }
             else
             {
-                <text>[&nbsp;&nbsp;@Html.ActionLink("Add", "AddPhoneNumber")
+            <table class="table">
+                <tr>
+                    <th>
+                        Rent Date
+                    </th>
+                    <th>
+                        Due Date
+                    </th>
+                    <th>
+                        Book Name
+                    </th>
+                </tr>
+
+                @foreach (var item in Model.Rents)
+                {
+                    <tr>
+                        <td>
+                            @item.RentDate
+                        </td>
+                        <td>
+                            @item.DueDate
+                        </td>
+                        <td>
+                            @Html.ActionLink(item.Book.Name, "Details", "Book", new { id = item.Book.Id }, null)
+                        </td>
+                    </tr>
+                }
+            </table>
             }
         </dd>
-        *@
-        <dt>Two-Factor Authentication:</dt>
+        <dt>Purchases:</dt>
         <dd>
-            <p>
-                There are no two-factor authentication providers configured. See <a href="https://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
-                for details on setting up this ASP.NET application to support two-factor authentication.
-            </p>
-            @*@if (Model.TwoFactor)
+            @if (Model.Sales == null || !Model.Sales.Any())
             {
-                using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                {
-                    @Html.AntiForgeryToken()
-                    <text>Enabled
-                    <input type="submit" value="Disable" class="btn btn-link" />
-                    </text>
-                }
+                <span>NA</span>
             }
             else
             {
-                using (Html.BeginForm("EnableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            <table class="table">
+                <tr>
+                    <th>
+                        Purchase Date
+                    </th>
+                    <th>
+                        Purchase Type
+                    </th>
+                    <th>
+                        Book Name
+                    </th>
+                    <th>
+                        Amount
+                    </th>
+                </tr>
+
+                @foreach (var item in Model.Sales)
                 {
-                    @Html.AntiForgeryToken()
-                    <text>Disabled
-                    <input type="submit" value="Enable" class="btn btn-link" />
-                    </text>
+                    <tr>
+                        <td>
+                            @item.Date
+                        </td>
+                        <td>
+                            @if(item.SaleType == 1)
+                            {
+                                <span>Rented</span>
+                            }
+                            else
+                            {
+                                <span>Bought</span>
+                            }
+                        </td>
+                        <td>
+                            @Html.ActionLink(item.Book.Name, "Details", "Book", new { id = item.Book.Id }, null)
+                        </td>
+                        <td>
+                            @item.Amount
+                        </td>
+                    </tr>
                 }
-            }*@
+            </table>
+            }
         </dd>
     </dl>
 </div>

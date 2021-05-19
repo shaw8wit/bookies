@@ -252,6 +252,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModel\BookControllerAddBookViewModel.cs" />
     <Compile Include="ViewModel\BookControllerAllViewModel.cs" />
+    <Compile Include="ViewModel\ManageControllerProfileViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -329,7 +330,6 @@
     <Content Include="Views\Book\All.cshtml" />
     <Content Include="Views\Book\Addforsale.cshtml" />
     <Content Include="Views\Book\Delete.cshtml" />
-    <Content Include="Views\Rent\Rent.cshtml" />
     <Content Include="Views\Book\Details.cshtml" />
     <Content Include="Views\Book\Pay.cshtml" />
     <Content Include="Views\LibraryCard\LibraryCard.cshtml" />

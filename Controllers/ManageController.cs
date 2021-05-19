@@ -1,12 +1,14 @@
 ﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Web;
+using System.Linq;
 using System.Web.Mvc;
+using System.Data.Entity;
+using System.Threading.Tasks;
+using Microsoft.Owin.Security;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
 using bookies.Models;
+using bookies.ViewModel;
 
 namespace bookies.Controllers
 {
@@ -15,6 +17,7 @@ namespace bookies.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationDbContext _context = new ApplicationDbContext();
 
         public ManageController()
         {
@@ -64,15 +67,16 @@ namespace bookies.Controllers
                 : "";
 
             var userId = User.Identity.GetUserId();
-            var user = UserManager.FindById(userId);
-            var model = new IndexViewModel
+            var user = _context.Users.SingleOrDefault(u => u.Id == userId);
+
+
+            var model = new ManageControllerProfileViewModel()
             {
+                Sales = _context.Sales.Include(s => s.Book).Where(s => s.User.Id == userId).ToList(),
+                Rents = _context.Rents.Include(s => s.Book).Where(s => s.User.Id == userId).ToList(),
                 HasPassword = HasPassword(),
-                PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
-                TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
-                Logins = await UserManager.GetLoginsAsync(userId),
-                BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId),
-                Email = user.Email
+                Email = user.Email,
+                Username = user.UserName
             };
             return View(model);
         }
