@@ -2,23 +2,149 @@
     ViewBag.Title = "Contact";
 }
 
-<h2>@ViewBag.Title</h2>
-<h3>@ViewBag.Message</h3>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: lightgrey;
+}
 
-<address>
-    INTCOM21DN001<br /> 
-    POD-5<br />
-    Project: <strong>The Bookies</strong>
-</address>
 
-<hr />
 
-<h4>Team Members:</h4>
-<address>
-    <strong>Shouvit Pradhan:</strong> <a href="mailto:shouvit.pradhan@cognizant.com">shouvit.pradhan@cognizant.com</a><br />
-    <strong>Anurag Singh Bhadoria:</strong> <a href="mailto:anurag.singhbhadoria@cognizant.com">anurag.singhbhadoria@cognizant.com</a><br />
-    <strong>Utkarsh Trivedi:</strong> <a href="mailto:utkarsh.trivedi@cognizant.com">utkarsh.trivedi@cognizant.com</a><br />
-    <strong>Tarana Parween:</strong> <a href="mailto:tarana.parween@cognizant.com">tarana.parween@cognizant.com</a><br />
-    <strong>Shaksham Jain:</strong> <a href="mailto:shaksham.jain@cognizant.com">shaksham.jain@cognizant.com</a><br />
-    <strong>Divyaansh Khare:</strong> <a href="mailto:divyaansh.khare@cognizant.com">divyaansh.khare@cognizant.com</a><br />
-</address>
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+  
+}
+
+input[type=submit] {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+
+.container {
+  border-radius: 5px;
+  
+ 
+}
+
+
+.column {
+  float: right;
+  width: 30%;
+  margin-top: 6px;
+  padding: 20px; 
+}
+        .column1 {
+            float: left;
+            margin-top: 6px;
+            width: 30%;
+            padding: 20px;
+        }
+
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+            
+          
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div style="text-align:center">
+            <h2>Contact Us</h2>
+            <p>Swing by for a cup of coffee, or leave us a message:</p>
+        </div>
+        <div class="row">
+            <div class="column1">
+                <img src="~/Images/contact-us-image.png" style="width:250%">
+            </div>
+            <div class="column">
+                <form onsubmit="myalert()">
+                    <label for="fname">First Name</label>
+                    <input type="text" id="fname" name="firstname" placeholder="Your name.." required>
+                    <label for="lname">Last Name</label>
+                    <input type="text" id="lname" name="lastname" placeholder="Your last name.." required>
+                    <label for="country">Country</label>
+                    <select id="country" name="country" required>
+                        <option value="australia">Australia</option>
+                        <option value="canada">India</option>
+                        <option value="usa">USA</option>
+                    </select>
+                    <label for="subject">Subject</label>
+                    <textarea id="subject" name="subject" placeholder="Write something.." style="height:100px" required></textarea>
+                    <input type="submit" value="Submit" >
+                </form>
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+    <div class="row">
+        <div class="col-md-3">
+            <div class="dbox w-100 text-center">
+                <div class="icon d-flex align-items-center justify-content-center">
+                    <span class="fa fa-map-marker"></span>
+                </div>
+                <div class="text">
+                    <p><span>Address:</span> Bookies Technologies,New Delhi 110001 </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="dbox w-100 text-center">
+                <div class="icon d-flex align-items-center justify-content-center">
+                    <span class="fa fa-phone"></span>
+                </div>
+                <div class="text">
+                    <p><span>Phone:</span> <a href="tel://1234567920">1800 2345 6789</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="dbox w-100 text-center">
+                <div class="icon d-flex align-items-center justify-content-center">
+                    <span class="fa fa-paper-plane"></span>
+                </div>
+                <div class="text">
+                    <p><span>Email:</span> <a href="mailto:shouvit.pradhan@cognizant.com">support@bookies.com</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="dbox w-100 text-center">
+                <div class="icon d-flex align-items-center justify-content-center">
+                    <span class="fa fa-globe"></span>
+                </div>
+                <div class="text">
+                    <p><span>Website</span> <a href="#">@Html.ActionLink("Bookies", "Index", "Home")</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function myalert() {
+            alert("Successfully Submitted!");
+        }
+    </script>
+</body>
+</html>

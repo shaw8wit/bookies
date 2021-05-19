@@ -185,6 +185,7 @@
     <Compile Include="Controllers\Api\AuthorController.cs" />
     <Compile Include="Controllers\Api\BookController.cs" />
     <Compile Include="Controllers\Api\GenreController.cs" />
+    <Compile Include="Controllers\Api\OffersController.cs" />
     <Compile Include="Controllers\Api\RentsController.cs" />
     <Compile Include="Controllers\Api\SalesController.cs" />
     <Compile Include="Controllers\BookController.cs" />
@@ -263,12 +264,18 @@
     <Content Include="Images\carousel1.jpg" />
     <Content Include="Images\carousel3.jpg" />
     <Content Include="Images\carousel2.jpg" />
+    <Content Include="Images\contact-us-image.png" />
+    <Content Include="Images\fortune.jpg" />
+    <Content Include="Images\gold.jpg" />
     <Content Include="Images\horror-book-icon-flat-style-illustration_csp85865328.jpg" />
     <Content Include="Images\carousel4.jpg" />
     <Content Include="Images\aboutus.jpeg" />
     <Content Include="Images\carousel5.jpeg" />
     <Content Include="Images\pink-motivation-book-green-circle-isolated-white-background-vector-icon-realistic-book-icon-pink-motivation-book-110969365.jpg" />
+    <Content Include="Images\salman.jpg" />
     <Content Include="Images\Screenshot %28460%29.png" />
+    <Content Include="Images\secret.jpg" />
+    <Content Include="Images\small.jpg" />
     <Content Include="Images\taco.jpg" />
     <Content Include="Images\thriller-book-icon-flat-style-vector-34226752.jpg" />
     <Content Include="Scripts\bootstrap.js" />
@@ -325,6 +332,7 @@
     <Content Include="Views\Book\Details.cshtml" />
     <Content Include="Views\Book\Pay.cshtml" />
     <Content Include="Views\LibraryCard\LibraryCard.cshtml" />
+    <Content Include="Views\Offers\OffersView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
