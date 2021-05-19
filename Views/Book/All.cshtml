@@ -1,4 +1,4 @@
-﻿@model IEnumerable<bookies.Models.Book>
+﻿@model bookies.ViewModel.BookControllerAllViewModel
 
 @{
     ViewBag.Title = "Book";
@@ -6,22 +6,25 @@
 
 <h2>Book</h2>
 
-<p>
-    @Html.ActionLink("ADD FOR SELLING", "Addforsale")
-</p>
+@if(@Model.HasLib)
+{
+    <p>
+        @Html.ActionLink("ADD FOR SELLING", "Addforsale")
+    </p>
+}
 
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.Books[0].Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Price)
+            @Html.DisplayNameFor(model => model.Books[0].Price)
         </th>
         <th></th>
     </tr>
 
-    @foreach (var item in Model)
+    @foreach (var item in Model.Books)
     {
         <tr>
             <td>
@@ -31,8 +34,8 @@
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
-                @Html.ActionLink("Buy", "Buy", new { id = item.Id }) |
-                @Html.ActionLink("Rent", "Rent", new { id = item.Id })
+                @Html.ActionLink("Buy", "Buy", new { id = item.Id, rent = false }) |
+                @Html.ActionLink("Rent", "Buy", new { id = item.Id, rent = true })
             </td>
         </tr>
     }

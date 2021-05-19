@@ -35,6 +35,10 @@
             {
                 @: @author.Name - @author.Description<br />
             }
+            @if(Model.Authors == null || !Model.Authors.Any())
+            {
+                <span>NA</span>
+            }
         </dd>
 
         <dt>Genre</dt>
@@ -42,6 +46,10 @@
             @foreach (var genre in Model.Genres)
             {
                 @genre.Name<br />
+            }
+            @if(Model.Authors == null || !Model.Authors.Any())
+            {
+                <span>NA</span>
             }
         </dd>
 
@@ -55,8 +63,8 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Buy", "Buy", new { id = Model.Id }) |
-    @Html.ActionLink("Rent", "Rent", new { id = Model.Id }) |
+    @Html.ActionLink("Buy", "Buy", new { id = Model.Id, rent = false }) |
+    @Html.ActionLink("Rent", "Buy", new { id = Model.Id, rent = true }) |
     @Html.ActionLink("Back to List", "All")
 </p>
 
