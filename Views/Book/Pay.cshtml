@@ -4,31 +4,14 @@
     ViewBag.Title = "Pay";
 }
 
+
+
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
 
-        .col-25 {
-            -ms-flex: 25%; /* IE10 */
-            flex: 25%;
-        }
-
-        .col-50 {
-            -ms-flex: 50%; /* IE10 */
-            flex: 50%;
-        }
-
-        .col-75 {
-            -ms-flex: 75%; /* IE10 */
-            flex: 75%;
-        }
-
-        .col-25,
-        .col-50,
-        .col-75 {
-            padding: 0 16px;
-        }
 
 
 
@@ -61,6 +44,7 @@
             border-radius: 3px;
             cursor: pointer;
             font-size: 17px;
+            margin-top:40px;
         }
 
             .btn:hover {
@@ -81,12 +65,33 @@
         }
 
 
-        .row {
-            flex-direction: column-reverse;
+
+
+
+
+        .email {
+            width: 100%;
+            height: 50px;
         }
 
-        .col-25 {
-            margin-bottom: 20px;
+        .mon {
+            width: 100%;
+            height: 50px;
+        }
+
+        .cvv {
+            width: 100%;
+            height: 50px;
+            margin-right: 200px;
+        }
+
+        .col-52 {
+            float: right;
+            margin-top: auto;
+        }
+
+        .left-row {
+            float: left;
         }
     </style>
 </head>
@@ -125,71 +130,70 @@
 <h3>Payment </h3>
 <p>Thank You For shopping With Us</p>
 
-<div class="col-75">
-    <div class="container">
-        <form action="#">
-            <div class="row">
-                <div class="col-50">
-                    <h3>Billing Address</h3>
-                    <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-                    <input type="text" id="fname" name="firstname" placeholder="First Name">
-                    <label for="email"><i class="fa fa-envelope"></i> Email</label>
-                    <input type="text" id="email" name="email" placeholder="Email address">
-                    <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
-                    <input type="text" id="adr" name="address" placeholder="Full Address">
-                    <label for="city"><i class="fa fa-institution"></i> City</label>
-                    <input type="text" id="city" name="city" placeholder="City Name">
+<div class="container">
+    <form onsubmit="popup()">
+        <br /><br />
+        <div class="left-row">
+            <h3>Billing Address</h3>
+            <br /><br />
+            <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+            <input type="text" id="fname" name="firstname" placeholder="First Name" required oninput="this.setCustomValidity('')"
+                   pattern="[A-Za-z]{2,20}"
+                   title="Username should atleast contain 2 letters. e.g. Om">
+            <label for="email"><i class="fa fa-envelope"></i> Email</label>
+            <input class="email" type="email" id="email" name="email" placeholder="Email address" required><br /><br />
+            <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+            <input type="text" id="adr" name="address" placeholder="Full Address" required>
+            <label for="city"><i class="fa fa-institution"></i> City</label>
+            <input type="text" id="city" name="city" placeholder="City Name" required
+                   oninput="this.setCustomValidity('')" pattern="[A-Z]{}[a-z]{}"
+                   title="Enter a valid city name">
 
-                    <div class="row">
-                        <div class="col-50">
-                            <label for="state">State</label>
-                            <input type="text" id="state" name="state" placeholder="State Name">
-                        </div>
 
-                        <div class="col-50">
-                            <label for="zip">Zip</label>
-                            <input type="text" id="zip" name="zip" placeholder="Zip Code">
-                        </div>
-                    </div>
-                </div>
 
-                <div class="col-50">
-                    <h3>Payment</h3>
-                    <label for="fname">Accepted Cards</label>
-                    <div class="icon-container">
-                        <i class="fa fa-cc-visa" style="color:navy;"></i>
-                        <i class="fa fa-cc-amex" style="color:blue;"></i>
-                        <i class="fa fa-cc-mastercard" style="color:red;"></i>
-                        <i class="fa fa-cc-discover" style="color:orange;"></i>
-                    </div>
+            <label for="state">State</label>
+            <input type="text" id="state" name="state" placeholder="State Name" required oninput="this.setCustomValidity('')" pattern="[A-Z]{}[a-z]{}"
+                   title="Enter a valid State">
 
-                    <label for="cname">Name on Card</label>
-                    <input type="text" id="cname" name="cardname" placeholder="Name of Card Holder">
-                    <label for="ccnum">Credit card number</label>
-                    <input type="text" id="ccnum" name="cardnumber" placeholder="Credit card number">
-                    <label for="expmonth">Exp Month</label>
-                    <input type="text" id="expmonth" name="expmonth" placeholder="Expiration Month">
 
-                    <div class="row">
-                        <div class="col-50">
-                            <label for="expyear">Exp Year</label>
-                            <input type="text" id="expyear" name="expyear" placeholder="Expiration Month">
-                        </div>
-                        <div class="col-50">
-                            <label for="cvv">CVV</label>
-                            <input type="password" id="cvv" name="cvv" placeholder="CVV">
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-
+            <label for="zip">Zip</label>
+            <input type="text" id="zip" name="zip" placeholder="Zip Code" required oninput="this.setCustomValidity('')" pattern="[0-9]{6}"
+                   title="Enter a valid zip code">
             <label>
-                <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
+                <input class="check" type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
             </label>
+        </div>
+        <br /><br />
 
-            @Html.ActionLink("Confirm Order", "Pay", new { id = Model.Id, rent = ViewBag.message == "Rent" }, new { @class="btn col-50" })
-        </form>
-    </div>
-</div>
+              <div class="col-52">
+                  <h3>Payment</h3>
+                  <br /><br />
+                  <label for="fname">Accepted Cards</label>
+                  <div class="icon-container">
+                      <i class="fa fa-cc-visa" style="color:navy;"></i>
+                      <i class="fa fa-cc-amex" style="color:blue;"></i>
+                      <i class="fa fa-cc-mastercard" style="color:red;"></i>
+                      <i class="fa fa-cc-discover" style="color:orange;"></i>
+                  </div>
+
+                  <label for="cname">Name on Card</label>
+                  <input type="text" id="cname" name="cardname" placeholder="Name of Card Holder" required oninput="this.setCustomValidity('')" pattern="[A-Za-z]{2,20}"
+                         title="Enter a valid user name">
+                  <label for="ccnum">Credit card number</label>
+                  <input type="text" id="ccnum" name="cardnumber" placeholder="Credit card number" required oninput="this.setCustomValidity('')" pattern="[0-9]{16}"
+                         title="Enter a valid card number">
+                  <label for="expmonth">Exp Month</label>
+                  <input class="mon" type="month" id="expmonth" name="expmonth" placeholder="Expiration Date" required oninput="this.setCustomValidity('')" pattern="[0-1][0-9]
+                         title="Enter a valid month">
+                  <br /><br />
+                  <label for="cvv">CVV</label>
+                  <input class="cvv" type="password" id="cvv" name="cvv" placeholder="CVV" required oninput="this.setCustomValidity('')" pattern="[0-9]{3}"
+                         title="Enter a valid cvv.">
+              </div>
+        <br /><br />
+
+        <br /><br />
+        <br /><br />
+        @Html.ActionLink("Confirm Order", "Pay", new { id = Model.Id, rent = ViewBag.message == "Rent" }, new { @class = "btn col-50" })
+
+    </form>
