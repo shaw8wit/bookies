@@ -2,45 +2,143 @@
 @{
     ViewBag.Title = "Register";
 }
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial;
+            color: white;
+        }
 
-<h2>@ViewBag.Title.</h2>
+        .split {
+            height: 100%;
+            width: 50%;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            overflow-x: hidden;
+            overflow-y:hidden;
+            padding-top: 20px;
+        }
 
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    @Html.AntiForgeryToken()
-    <h4>Create a new account.</h4>
-    <hr />
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(m => m.Username, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+        .left {
+            left: 0;
+            background-color: black;
+        }
+
+        .right {
+            right: 0;
+            background-color: whitesmoke;
+        }
+
+        .centered {
+            position: absolute;
+            top: 56%;
+            left: 52%;
+            transform: translate(-50%, -50%);
+        }
+        .centered1 {
+            position: absolute;
+            top: 55%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+         
+        h4 {
+            color: black;
+           
+            width: 300px;
+        }
+
+        .btn-default {
+            background-color: forestgreen;
+            width: 220px;
+            position: absolute;
+            left: 37%;
+            transform: translate(-50%, -50%);
+        }
+        .form-group {
+            color: black;
+            width: 100px;
+            right:30px;
+            
+        }
+
+        .form-group1 {
+            color: black;
+            width: 100px;
+        }
+
+        .col-md-10 {
+            top :-24px;
+            left:90px;
+            width: 250px;
+            
+        }
+        .col-md-11 {
+            top: -36px;
+            left: 90px;
+            width: 250px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="split left">
+        <div class="centered">
+            <img src="~/Images/many.jpg" style="width:700px;height:620px" />
         </div>
     </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+
+    <div class="split right">
+        <div class="centered1">
+            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <h4>Create a new account.</h4>
+                <hr />
+                @Html.ValidationSummary("", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Username, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Username, new { @class = "form-control" ,@placeholder = "Enter your User Name" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Enter your Email Address" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Enter your Password" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-11">
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Confirm your Password" })
+                    </div>
+                </div>
+                <div class="form-group1">
+                    <hr />
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" class="btn btn-default" value="Register" />
+                    </div>
+                </div>
+            }
         </div>
     </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Register" />
-        </div>
-    </div>
-}
+
+</body>
+</html>
+
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

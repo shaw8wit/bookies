@@ -5,10 +5,14 @@
 
 <head>
     <style>
-body {
-  font-size: 15px;
-  background-color: lightgrey;
-}
+        body {
+            font-size: 15px;
+            background-color: lightgrey;
+            background-image: url(/Images/dull.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+        }
 
 button {
   background: #ffc600;
@@ -134,7 +138,7 @@ img {
 /* About Section */
 
 .about {
-  background: white;
+  background-color: lightgrey;
   padding:50px;
   display: grid;
   grid-template-columns: 400px 1fr;
@@ -370,12 +374,10 @@ img {
         <img style="padding-left:50px" margin right="0px" src="~/Images/Screenshot (460).png" height="230" width="470"/>
     </section>
 
-    <section class="about">
-        <div class="about__details">
+    
 
             <button><a href="#">@Html.ActionLink("Learn More", "About", "Home")</a></button>
-        </div>
-    </section>
+       
 
 
     <section class="gallery">
