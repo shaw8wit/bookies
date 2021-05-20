@@ -11,14 +11,17 @@
             margin: 0 !important;
             /*background-color : darkolivegreen !important;*/
         }
+
         .center {
             align-self: center;
         }
+
         .body {
             min-height: 70vh;
             margin-top: 14vh;
             padding: 1vh 1vw;
         }
+
         body {
             padding-top: 0 !important;
         }
@@ -28,15 +31,17 @@
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
+        <img src="~/Images/4a32cacaf19e43ab8a388e15303d1d11.png" style="padding-left:100px;padding-top:5px;" />
+
         <div class="container center">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" 
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
                         data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("The Bookies", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">

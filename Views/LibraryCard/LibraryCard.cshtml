@@ -97,9 +97,12 @@
         .col-25 {
             margin-bottom: 20px;
         }
+
+        .fa fa-envelope {
+            padding: 10%;
+        }
     </style>
-    <script>function popup()
-        { alert("Library Card Successfully Created."); }</script>
+    <script>function popup() { alert("Library Card Successfully Created."); }</script>
 </head>
 <body>
 
@@ -113,9 +116,13 @@
                     <div class="col-50">
                         <h3>Apply here.</h3>
                         <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-                        <input type="text" id="fname" name="firstname" placeholder="Diyansh Khare">
+
+                        <input type="text" id="username" required placeholder="Enter Name"
+                               oninput="this.setCustomValidity('')" pattern="[A-Za-z]{2,20}"
+                               title="Username should atleast contain 2 letters. e.g. Om" />
+                        <!--<input type="text" id="fname" name="firstname" placeholder="Enter your name" required>-->
                         <label for="email"><i class="fa fa-envelope"></i> Email</label>
-                        <input type="text" id="email" name="email" placeholder="Diyansh Khare@example.com">
+                        <input type="email" id="email" name="email" placeholder="xyz@example.com" required>
 
 
 
@@ -140,24 +147,24 @@
 
 
                     <label for="cname">Name on Card</label>
-                    <input type="text" id="cname" name="cardname" placeholder="Diyansh Khare">
+                    <input type="text" id="cname" name="cardname" placeholder="Enter Card Holder's Name" required>
                     <label for="ccnum">Credit card number</label>
-                    <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+                    <input type="text" id="ccnum" name="cardnumber" placeholder="XXXX-XXXX-XXXX-XXXX" required>
                     <label for="expmonth">Exp Month</label>
-                    <input type="text" id="expmonth" name="expmonth" placeholder="September">
+                    <input type="text" id="expmonth" name="expmonth" placeholder="Enter Month" required>
 
 
                     <div class="row">
                         <div class="col-50">
                             <label for="expyear">Exp Year</label>
-                            <input type="text" id="expyear" name="expyear" placeholder="2021">
+                            <input type="text" id="expyear" name="expyear" placeholder="Enter Year" required>
                         </div>
 
 
 
                         <div class="col-50">
                             <label for="cvv">CVV</label>
-                            <input type="password" id="cvv" name="cvv" placeholder="--">
+                            <input type="password" id="cvv" name="cvv" placeholder="--" hidden>
                         </div>
 
                     </div>
@@ -168,7 +175,7 @@
 
 
 
-        <input type="button" value="Continue to checkout" onclick="popup()" class="btn">
+        <input type="submit" value="Continue to checkout" class="btn">
 
         </form>
     </div>
