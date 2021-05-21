@@ -6,10 +6,10 @@
 
 <h2>Book</h2>
 
-@if(@Model.HasLib)
+@if(@Model.IsAdmin)
 {
     <p>
-        @Html.ActionLink("ADD FOR SELLING", "Addforsale")
+        @Html.ActionLink("ADD Book", "AddBook")
     </p>
 }
 
@@ -34,9 +34,14 @@
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
-                @Html.ActionLink("Buy", "Buy", new { id = item.Id, rent = false }) |
-                @Html.ActionLink("Rent", "Buy", new { id = item.Id, rent = true })
-            </td>
+                @Html.ActionLink("Buy", "Buy", "Book", new { id = item.Id, rent = false }, new { @class = "btn btn-success" }) |
+                @Html.ActionLink("Rent", "Buy", "Book", new { id = item.Id, rent = true }, new { @class = "btn btn-primary" })
+                @if (@Model.IsAdmin)
+                {
+                    <span> | </span>
+                    @Html.ActionLink("Delete", "Delete", "Book", new { id = item.Id }, new { @class = "btn btn-danger" })
+                }
+                </td>
         </tr>
     }
 </table>

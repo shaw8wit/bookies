@@ -4,17 +4,10 @@
     ViewBag.Title = "Pay";
 }
 
-
-
-
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
-
-
-
-
         input[type=text] {
             width: 100%;
             margin-bottom: 20px;
@@ -47,9 +40,9 @@
             margin-top:40px;
         }
 
-            .btn:hover {
-                background-color: #45a049;
-            }
+        .btn:hover {
+            background-color: #45a049;
+        }
 
         a {
             color: #2196F3;
@@ -63,11 +56,6 @@
             float: right;
             color: grey;
         }
-
-
-
-
-
 
         .email {
             width: 100%;
@@ -121,6 +109,10 @@
         </dt>
         <dd>
             $ @Html.DisplayFor(model => model.Price)
+            @if(ViewBag.message == "Rent")
+            {
+                <span> ÷ 5</span>
+            }
         </dd>
     </dl>
 </div>
@@ -148,12 +140,6 @@
             <input type="text" id="city" name="city" placeholder="City Name" required
                    oninput="this.setCustomValidity('')" pattern="[A-Z]{}[a-z]{}"
                    title="Enter a valid city name">
-
-
-
-            <label for="state">State</label>
-            <input type="text" id="state" name="state" placeholder="State Name" required oninput="this.setCustomValidity('')" pattern="[A-Z]{}[a-z]{}"
-                   title="Enter a valid State">
 
 
             <label for="zip">Zip</label>

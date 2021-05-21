@@ -29,6 +29,21 @@
             }
             ]
         </dd>
+        <dt>Priveledges:</dt>
+        <dd>
+            @if (Model.LibraryCard != 0)
+            {
+                <span class="badge" style="background-color: saddlebrown;">Library Card</span>
+            }
+            @if (Model.Admin)
+            {
+                <span class="badge" style="background-color: maroon;">Admin</span>
+            }
+            @if (Model.LibraryCard == 0 && !Model.Admin)
+            {
+                <span>NA</span>
+            }
+        </dd>
         <dt>Rents:</dt>
         <dd>
             @if (Model.Rents == null || !Model.Rents.Any())
@@ -37,34 +52,34 @@
             }
             else
             {
-            <table class="table">
-                <tr>
-                    <th>
-                        Rent Date
-                    </th>
-                    <th>
-                        Due Date
-                    </th>
-                    <th>
-                        Book Name
-                    </th>
-                </tr>
-
-                @foreach (var item in Model.Rents)
-                {
+                <table class="table">
                     <tr>
-                        <td>
-                            @item.RentDate
-                        </td>
-                        <td>
-                            @item.DueDate
-                        </td>
-                        <td>
-                            @Html.ActionLink(item.Book.Name, "Details", "Book", new { id = item.Book.Id }, null)
-                        </td>
+                        <th>
+                            Rent Date
+                        </th>
+                        <th>
+                            Due Date
+                        </th>
+                        <th>
+                            Book Name
+                        </th>
                     </tr>
-                }
-            </table>
+
+                    @foreach (var item in Model.Rents)
+                    {
+                        <tr>
+                            <td>
+                                @item.RentDate
+                            </td>
+                            <td>
+                                @item.DueDate
+                            </td>
+                            <td>
+                                @Html.ActionLink(item.Book.Name, "Details", "Book", new { id = item.Book.Id }, null)
+                            </td>
+                        </tr>
+                    }
+                </table>
             }
         </dd>
         <dt>Purchases:</dt>
@@ -75,47 +90,47 @@
             }
             else
             {
-            <table class="table">
-                <tr>
-                    <th>
-                        Purchase Date
-                    </th>
-                    <th>
-                        Purchase Type
-                    </th>
-                    <th>
-                        Book Name
-                    </th>
-                    <th>
-                        Amount
-                    </th>
-                </tr>
-
-                @foreach (var item in Model.Sales)
-                {
+                <table class="table">
                     <tr>
-                        <td>
-                            @item.Date
-                        </td>
-                        <td>
-                            @if(item.SaleType == 1)
-                            {
-                                <span>Rented</span>
-                            }
-                            else
-                            {
-                                <span>Bought</span>
-                            }
-                        </td>
-                        <td>
-                            @Html.ActionLink(item.Book.Name, "Details", "Book", new { id = item.Book.Id }, null)
-                        </td>
-                        <td>
-                            @item.Amount
-                        </td>
+                        <th>
+                            Purchase Date
+                        </th>
+                        <th>
+                            Purchase Type
+                        </th>
+                        <th>
+                            Book Name
+                        </th>
+                        <th>
+                            Amount
+                        </th>
                     </tr>
-                }
-            </table>
+
+                    @foreach (var item in Model.Sales)
+                    {
+                        <tr>
+                            <td>
+                                @item.Date
+                            </td>
+                            <td>
+                                @if (item.SaleType == 1)
+                                {
+                                    <span>Rented</span>
+                                }
+                                else
+                                {
+                                    <span>Bought</span>
+                                }
+                            </td>
+                            <td>
+                                @Html.ActionLink(item.Book.Name, "Details", "Book", new { id = item.Book.Id }, null)
+                            </td>
+                            <td>
+                                @item.Amount
+                            </td>
+                        </tr>
+                    }
+                </table>
             }
         </dd>
     </dl>

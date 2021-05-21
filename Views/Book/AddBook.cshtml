@@ -1,0 +1,124 @@
+﻿@{
+    ViewBag.Title = "Add Book";
+}
+
+<h2>How to add data</h2>
+
+<h3>This page is only visible to admins</h3>
+
+<h4>All api endpoints should be prefixed by /api</h4>
+
+<h5>Before making a POST/PUT request make sure to see the desired structure of the model needed in the POST and PUT body by making a GET request first, also add Content-Type as application/json in the header of these requests</h5>
+
+<dl class="dl-horizontal">
+    <dt>/genre</dt>
+    <dd>
+        <strong>Genre</strong> model
+        <dl class="dl-horizontal">
+            <dt>GET</dt>
+            <dd>
+                Fetch all Genres
+            </dd>
+            <dt>POST</dt>
+            <dd>
+                Add Genre
+            </dd>
+            <dt>PUT/{id}</dt>
+            <dd>
+                Update Genre with specified id from uri
+            </dd>
+            <dt>DELETE/{id}</dt>
+            <dd>
+                Delete Genre with specified id from uri
+            </dd>
+        </dl>
+    </dd>
+    <dt>/author</dt>
+    <dd>
+        <strong>Author</strong> model
+        <dl class="dl-horizontal">
+            <dt>GET</dt>
+            <dd>
+                Fetch all Authors
+            </dd>
+            <dt>POST</dt>
+            <dd>
+                Add Author
+            </dd>
+            <dt>PUT/{id}</dt>
+            <dd>
+                Update Author with specified id from uri
+            </dd>
+            <dt>DELETE/{id}</dt>
+            <dd>
+                Delete Author with specified id from uri
+            </dd>
+        </dl>
+    </dd>
+    <dt>/book</dt>
+    <dd>
+        <strong>Book</strong> model
+        <dl class="dl-horizontal">
+            <dt>GET</dt>
+            <dd>
+                Fetch all Books
+            </dd>
+            <dt>POST</dt>
+            <dd>
+                Add Book
+            </dd>
+            <dt>PUT/{id}</dt>
+            <dd>
+                Update Book with specified id from uri
+            </dd>
+            <dt>DELETE/{id}</dt>
+            <dd>
+                Delete Book with specified id from uri
+            </dd>
+        </dl>
+    </dd>
+    <dt>/rents</dt>
+    <dd>
+        <strong>Rent</strong> model
+        <dl class="dl-horizontal">
+            <dt>GET</dt>
+            <dd>
+                Fetch all Rents
+            </dd>
+            <dt>POST</dt>
+            <dd>
+                Add Rents
+            </dd>
+            <dt>PUT/{id}</dt>
+            <dd>
+                Update Rents with specified id from uri
+            </dd>
+            <dt>DELETE/{id}</dt>
+            <dd>
+                Delete Rents with specified id from uri
+            </dd>
+        </dl>
+    </dd>
+    <dt>/sales</dt>
+    <dd>
+        <strong>Sale</strong> model
+        <dl class="dl-horizontal">
+            <dt>GET</dt>
+            <dd>
+                Fetch all Sales
+            </dd>
+            <dt>POST</dt>
+            <dd>
+                Add Sales
+            </dd>
+            <dt>PUT/{id}</dt>
+            <dd>
+                Update Sales with specified id from uri
+            </dd>
+            <dt>DELETE/{id}</dt>
+            <dd>
+                Delete Sales with specified id from uri
+            </dd>
+        </dl>
+    </dd>
+</dl>

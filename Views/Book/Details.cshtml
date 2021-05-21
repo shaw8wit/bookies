@@ -1,4 +1,4 @@
-﻿@model bookies.Models.Book
+﻿@model bookies.ViewModel.BookControllerDetailsViewModel
 
 @{
     ViewBag.Title = "Details";
@@ -9,33 +9,33 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.Book.Name)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Name)
+            @Html.DisplayFor(model => model.Book.Name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Description)
+            @Html.DisplayNameFor(model => model.Book.Description)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Description)
+            @Html.DisplayFor(model => model.Book.Description)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Isbn)
+            @Html.DisplayNameFor(model => model.Book.Isbn)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Isbn)
+            @Html.DisplayFor(model => model.Book.Isbn)
         </dd>
 
         <dt>Author</dt>
         <dd>
-            @foreach (var author in Model.Authors)
+            @foreach (var author in Model.Book.Authors)
             {
                 @: @author.Name - @author.Description<br />
             }
-            @if(Model.Authors == null || !Model.Authors.Any())
+            @if(Model.Book.Authors == null || !Model.Book.Authors.Any())
             {
                 <span>NA</span>
             }
@@ -43,28 +43,33 @@
 
         <dt>Genre</dt>
         <dd>
-            @foreach (var genre in Model.Genres)
+            @foreach (var genre in Model.Book.Genres)
             {
                 @genre.Name<br />
             }
-            @if(Model.Authors == null || !Model.Authors.Any())
+            @if(Model.Book.Genres == null || !Model.Book.Genres.Any())
             {
                 <span>NA</span>
             }
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Price)
+            @Html.DisplayNameFor(model => model.Book.Price)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Price)
+            @Html.DisplayFor(model => model.Book.Price)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Buy", "Buy", new { id = Model.Id, rent = false }) |
-    @Html.ActionLink("Rent", "Buy", new { id = Model.Id, rent = true }) |
-    @Html.ActionLink("Back to List", "All")
+    @Html.ActionLink("Buy", "Buy", "Book", new { id = Model.Book.Id, rent = false }, new { @class = "btn btn-success" }) |
+    @Html.ActionLink("Rent", "Buy", "Book", new { id = Model.Book.Id, rent = true }, new { @class = "btn btn-primary" }) |
+    @if (@Model.IsAdmin)
+    {
+        @Html.ActionLink("Delete", "Delete", "Book", new { id = Model.Book.Id }, new { @class = "btn btn-danger" })
+        <span> | </span>
+    }
+    @Html.ActionLink("Back to List", "All", "Book", new { area = "" }, new { @class = "btn btn-info" })
 </p>
 
