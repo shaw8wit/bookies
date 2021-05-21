@@ -137,7 +137,7 @@
                         <label for="fname"><i class="fa fa-user"></i> Full Name</label>
 
                         <input type="text" id="username" required placeholder="Enter Name"
-                               oninput="this.setCustomValidity('')" pattern="[A-Za-z]{2,20}"
+                               oninput="this.setCustomValidity('')" pattern="[A-Za-z\s]{2,20}"
                                title="Username should atleast contain 2 letters. e.g. Om" />
                         <!--<input type="text" id="fname" name="firstname" placeholder="Enter your name" required>-->
                         <label for="email"><i class="fa fa-envelope"></i> Email</label>
@@ -145,7 +145,7 @@
                         <br />
                         <br />
                         <label for="Mobile No"><i class="fa fa-mobile-phone"></i> Mobile Number</label>
-                        <input class="mobileNo" type="tel" id="mobileNo" name="mobileNo" placeholder="1111111111" required pattern="[6-9][0-9]{9}">
+                        <input class="mobileNo" type="tel" id="mobileNo" name="mobileNo" placeholder="Enter your Phone Number" required pattern="[6-9][0-9]{9}">
                     </div>
                 </div>
                 <div class="col-50">
@@ -161,7 +161,7 @@
 
 
                     <label for="cname">Name on Card</label>
-                    <input type="text" id="cname" name="cardname" placeholder="Name of Card Holder" required oninput="this.setCustomValidity('')" pattern="[A-Za-z]{2,20}"
+                    <input type="text" id="cname" name="cardname" placeholder="Name of Card Holder" required oninput="this.setCustomValidity('')" pattern="[A-Za-z\s]{2,20}"
                            title="Enter a valid user name">
                     <label for="ccnum">Credit card number</label>
                     <input type="text" id="ccnum" name="cardnumber" placeholder="Credit card number" required oninput="this.setCustomValidity('')" pattern="[0-9]{16}"

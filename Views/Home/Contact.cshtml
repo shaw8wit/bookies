@@ -84,7 +84,7 @@ input[type=submit]:hover {
                     @*<input type="text" id="fname" name="firstname" placeholder="Your name.." required pattern="[A-Z]{}[a-z]{}"
         title="Enter valid First Name">*@
                     <input type="text" id="username" required placeholder="Enter First Name"
-                           oninput="this.setCustomValidity('')" pattern="[A-Za-z]{2,20}"
+                           oninput="this.setCustomValidity('')" pattern="[A-Za-z\s]{2,20}"
                            title="Enter a valid First Name" />
                     <label for="lname">Last Name</label>
                     <input type="text" id="username" required placeholder="Enter Last Name"
