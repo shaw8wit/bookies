@@ -55,7 +55,7 @@ namespace bookies.Controllers
 
         //
         // GET: /Manage/Index
-        public async Task<ActionResult> Index(ManageMessageId? message)
+        public ActionResult Index(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
                 message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
@@ -69,14 +69,15 @@ namespace bookies.Controllers
             var userId = User.Identity.GetUserId();
             var user = _context.Users.SingleOrDefault(u => u.Id == userId);
 
-
             var model = new ManageControllerProfileViewModel()
             {
                 Sales = _context.Sales.Include(s => s.Book).Where(s => s.User.Id == userId).ToList(),
                 Rents = _context.Rents.Include(s => s.Book).Where(s => s.User.Id == userId).ToList(),
                 HasPassword = HasPassword(),
                 Email = user.Email,
-                Username = user.UserName
+                Username = user.UserName,
+                LibraryCard = user.LibraryCard,
+                Admin = user.Admin
             };
             return View(model);
         }

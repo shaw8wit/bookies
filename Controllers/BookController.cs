@@ -39,7 +39,7 @@ namespace bookies.Controllers
             var user = UserManager.FindById(User.Identity.GetUserId());
             return View(new BookControllerAllViewModel() 
                 { 
-                    HasLib = user != null && user.LibraryCard != 0, 
+                    IsAdmin = user != null && user.Admin, 
                     Books = _context.Books.ToList() 
                 }
             );
@@ -48,13 +48,14 @@ namespace bookies.Controllers
         // Single book details page
         public ActionResult Details(int? id)
         {
+            var user = UserManager.FindById(User.Identity.GetUserId());
             Book book = _context.Books.Include(b => b.Genres)
                 .Include(b => b.Authors).SingleOrDefault(b => b.Id == id);
             if (book == null)
             {
                 return HttpNotFound();
             }
-            return View(book);
+            return View(new BookControllerDetailsViewModel() { IsAdmin = user.Admin, Book = book});
         }
 
         // Buy book
@@ -73,72 +74,32 @@ namespace bookies.Controllers
             return View("Pay", book);
         }
 
-        /*
-        [HttpPost]
-        public ActionResult Details(int id)
+        //Add book
+        public ActionResult AddBook()
         {
-            var book1 = _context.Books.Find(id);
-            if (book1 == null)
-            {
-                return HttpNotFound();
-            }
-            return View(book1);
+            var user = UserManager.FindById(User.Identity.GetUserId());
+            if(!user.Admin) return RedirectToAction("All");
+            return View();
         }
 
-
         [HttpPost]
-        public ActionResult Details2(int id)
+        public ActionResult AddBook(Book book)
         {
-            var book1 = _context.Books.Find(id);
-            if (book1 == null)
-            {
-                return HttpNotFound();
-            }
-            return View(book1);
+            _context.Books.Add(book);
+            _context.SaveChanges();
+            return RedirectToAction("book", "book");
         }
 
-        //delete book
-        [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Delete(int id)
         {
-            Book book = _context.Books.Find(id);
-            if (book == null)
-            {
-                return HttpNotFound();
-            }
-            return View("Delete",book);
-        }
-
-
-        [HttpPost]
-        public ActionResult Delete(string id)
-        {
-            Book book = _context.Books.Find(Convert.ToInt32(id));
+            Book book = _context.Books.SingleOrDefault(b => b.Id == id);
             if (book == null)
             {
                 return HttpNotFound();
             }
             _context.Books.Remove(book);
             _context.SaveChanges();
-            return RedirectToAction("book","book");
-        }
-        */
-
-        //sell books
-        [HttpGet]
-        public ActionResult Addforsale()
-        {
-            Book book = new Book();
-            return View(book);
-        }
-
-        [HttpPost]
-        public ActionResult Addforsale(Book book)
-        {
-            _context.Books.Add(book);
-            _context.SaveChanges();
-            return RedirectToAction("book", "book");
+            return RedirectToAction("All");
         }
 
         public ActionResult Pay(int id, bool rent)
@@ -168,13 +129,19 @@ namespace bookies.Controllers
                 _context.Rents.Add(rentData);
                 _context.SaveChanges();
             }
+            int amount = book.Price;
+            if(rent)
+            {
+                if (user.LibraryCard == 0) amount = book.Price / 5;
+                else amount = 0;
+            }
             Sale saleData = new Sale()
             {
                 Date = curDate,
                 SaleType = Convert.ToByte(rent),
                 Book = book,
                 User = user,
-                Amount = book.Price / (rent ? 5 : 1)
+                Amount = amount
             };
             _context.Sales.Add(saleData);
             _context.SaveChanges();
