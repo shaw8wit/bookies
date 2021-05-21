@@ -17,5 +17,9 @@ namespace bookies.ViewModel
         public string Email { get; set; }
 
         public string Username { get; set; }
+
+        public byte LibraryCard { get; set; }
+
+        public bool Admin { get; set; }
     }
 }

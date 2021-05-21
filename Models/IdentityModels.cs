@@ -11,6 +11,7 @@ namespace bookies.Models
     public class ApplicationUser : IdentityUser
     {
         public byte LibraryCard { get; set; }
+        public bool Admin { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -22,8 +23,6 @@ namespace bookies.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        internal object book;
-
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Author> Authors { get; set; }
         public DbSet<Book> Books { get; set; }
