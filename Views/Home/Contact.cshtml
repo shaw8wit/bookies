@@ -80,10 +80,23 @@ input[type=submit]:hover {
             </div>
             <div class="column">
                 <form onsubmit="myalert()">
+<<<<<<< HEAD
                     <label for="username">Name</label>
                     <input type="text" id="username" required placeholder="Enter Your Name"
                            oninput="this.setCustomValidity('')" pattern="[A-Za-z]{2,20}"
                            title="Enter a valid Name" />
+=======
+                    <label for="fname">First Name</label>
+                    @*<input type="text" id="fname" name="firstname" placeholder="Your name.." required pattern="[A-Z]{}[a-z]{}"
+        title="Enter valid First Name">*@
+                    <input type="text" id="username" required placeholder="Enter First Name"
+                           oninput="this.setCustomValidity('')" pattern="[A-Za-z\s]{2,20}"
+                           title="Enter a valid First Name" />
+                    <label for="lname">Last Name</label>
+                    <input type="text" id="username" required placeholder="Enter Last Name"
+                           oninput="this.setCustomValidity('')" pattern="[A-Za-z]{2,20}"
+                           title="Enter a valid Last Name" />
+>>>>>>> a44e645415a03ec5ce121e540ddd3596c6cba75b
                     <label for="country">Country</label>
                     <select id="country" name="country" required>
                         <option value="" disabled selected hidden>Select Country</option>
