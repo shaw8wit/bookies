@@ -1,8 +1,6 @@
 ﻿@model bookies.Models.Book
 
-@{
-    ViewBag.Title = "Library Card";
-}
+@{ ViewBag.Title = "Library Card"; }
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -83,77 +81,6 @@
         }
     </style>
 </head>
-<<<<<<< HEAD
-=======
-<body>
-
-
-
-        <div class="container">
-            <form onsubmit="popup()">
-                <br />
-                <div class="row">
-                    <div class="col-52">
-                        <h3>Apply here.</h3>
-                        <br />
-                        <br />
-                        <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-
-                        <input type="text" id="username" required placeholder="Enter Name"
-                               oninput="this.setCustomValidity('')" pattern="[A-Za-z\s]{2,20}"
-                               title="Username should atleast contain 2 letters. e.g. Om" />
-                        <!--<input type="text" id="fname" name="firstname" placeholder="Enter your name" required>-->
-                        <label for="email"><i class="fa fa-envelope"></i> Email</label>
-                        <input class="email" type="email" id="email" name="email" placeholder="xyz@example.com" required>
-                        <br />
-                        <br />
-                        <label for="Mobile No"><i class="fa fa-mobile-phone"></i> Mobile Number</label>
-                        <input class="mobileNo" type="tel" id="mobileNo" name="mobileNo" placeholder="Enter your Phone Number" required pattern="[6-9][0-9]{9}">
-                    </div>
-                </div>
-                <div class="col-50">
-                    <h3>Payment</h3>
-                    <label for="fname">Accepted Cards</label>
-                    <div class="icon-container">
-                        <i class="fa fa-cc-visa" style="color:navy;"></i>
-                        <i class="fa fa-cc-amex" style="color:blue;"></i>
-                        <i class="fa fa-cc-mastercard" style="color:red;"></i>
-                        <i class="fa fa-cc-discover" style="color:orange;"></i>
-                    </div>
-
-
-
-                    <label for="cname">Name on Card</label>
-                    <input type="text" id="cname" name="cardname" placeholder="Name of Card Holder" required oninput="this.setCustomValidity('')" pattern="[A-Za-z\s]{2,20}"
-                           title="Enter a valid user name">
-                    <label for="ccnum">Credit card number</label>
-                    <input type="text" id="ccnum" name="cardnumber" placeholder="Credit card number" required oninput="this.setCustomValidity('')" pattern="[0-9]{16}"
-                           title="Enter avalid card number">
-                    <label for="expmonth">Exp Month & Year</label>
-                    <input type="month" id="expmonth" name="expmonth" placeholder="Expiration Date" required oninput="this.setCustomValidity('')" pattern="[0-1][0-9]
-                           title="Enter a valid month">
-
-                               <br />
-                                <br />
-                            <label for="cvv">CVV</label>
-                            <input type="password" id="cvv" name="cvv" placeholder="CVV" required oninput="this.setCustomValidity('')" 
-                                   pattern="[0-9]{3}" title="Enter a valid cvv.">
-
-                </div>
-
-
-
-
-        <br />
-        <br />
-        <input type="submit" value="Continue to checkout" class="btn">
-
-        </form>
-    </div>
-    </div>
-
-
->>>>>>> a44e645415a03ec5ce121e540ddd3596c6cba75b
 
 <script>
     function popup() {
@@ -234,3 +161,4 @@
         @Html.ActionLink("Confirm Order", "Pay", new { area = "" }, new { @class = "btn col-50" })
 
     </form>
+</div>
