@@ -37,11 +37,11 @@ namespace bookies.Controllers
         public ActionResult All()
         {
             var user = UserManager.FindById(User.Identity.GetUserId());
-            return View(new BookControllerAllViewModel() 
-                { 
-                    IsAdmin = user != null && user.Admin, 
-                    Books = _context.Books.ToList() 
-                }
+            return View(new BookControllerAllViewModel()
+            {
+                IsAdmin = user != null && user.Admin,
+                Books = _context.Books.ToList()
+            }
             );
         }
 
@@ -55,13 +55,13 @@ namespace bookies.Controllers
             {
                 return HttpNotFound();
             }
-            return View(new BookControllerDetailsViewModel() { IsAdmin = user.Admin, Book = book});
+            return View(new BookControllerDetailsViewModel() { IsAdmin = user.Admin, Book = book });
         }
 
         // Buy book
         public ActionResult Buy(int id, bool rent)
         {
-            if(!Request.IsAuthenticated)
+            if (!Request.IsAuthenticated)
             {
                 return RedirectToRoute(new { action = "Login", controller = "Account", area = "" });
             }
@@ -78,7 +78,7 @@ namespace bookies.Controllers
         public ActionResult AddBook()
         {
             var user = UserManager.FindById(User.Identity.GetUserId());
-            if(!user.Admin) return RedirectToAction("All");
+            if (!user.Admin) return RedirectToAction("All");
             return View();
         }
 
@@ -88,7 +88,7 @@ namespace bookies.Controllers
             _context.Books.Add(book);
             _context.SaveChanges();
             return RedirectToAction("book", "book");
-        }
+        }ooks.Add(b
 
         public ActionResult Delete(int id)
         {
@@ -116,7 +116,7 @@ namespace bookies.Controllers
                 return HttpNotFound();
             }
             DateTime curDate = DateTime.Today;
-            if(rent)
+            if (rent)
             {
                 DateTime dueDate = curDate.AddDays(7);
                 Rent rentData = new Rent()
@@ -130,7 +130,7 @@ namespace bookies.Controllers
                 _context.SaveChanges();
             }
             int amount = book.Price;
-            if(rent)
+            if (rent)
             {
                 if (user.LibraryCard == 0) amount = book.Price / 5;
                 else amount = 0;
