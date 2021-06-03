@@ -1,16 +1,17 @@
 # The Bookies
 
 A place to buy, rent and avail various offers on books.
+Special priveledges for admin and library card holder.
 
 
 ## Getting Started
 
-+ Clone the repo locally
++ Clone or extract the repo locally
 + Install entity framework if not done so already
-+ Delete and Add `App_Data` to root directory of the repo if facing 
-+ `enable-migrations` if entity framework is not enabled
-+ Run migrations with `update-database`
++ `enable-migrations` from package manager console if migrations are not enabled
++ Run migrations and update database with `update-database`
 + Build and run the project using `Ctrl + F5`
++ In case of database error Delete and Add `App_Data` to root directory of the repo and update database
 
 
 ## Specifications
@@ -26,7 +27,7 @@ A place to buy, rent and avail various offers on books.
 
 ## API's
 
-+ api endpoints should be prefixed by `api/`
+Api endpoints should be prefixed by `api/`
 <dl class="dl-horizontal">
     <dt>/genre</dt>
     <dd>
